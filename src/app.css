@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%; /* #ffffff */
+        --foreground: 240 10% 10%; /* #1a1a1a */
+        --accent: 248 52% 15%; /* #161141 */
+        --accent-foreground: 0 0% 100%; /* #ffffff */
+        --destructive: 0 84% 60%; /* #f75555 */
+        --destructive-foreground: 0 0% 100%; /* #ffffff */
+        --border: 240 5% 90%; /* #e5e5e5 */
+    }
+
+    * {
+        @apply border-border;
+    }
+}
+
+@layer components {
+    html {
+        @apply overflow-x-hidden;
+        color-scheme: light;
+    }
+
+    body {
+        @apply flex justify-center w-[100dvw] bg-background text-foreground overflow-x-hidden;
+    }
+}
