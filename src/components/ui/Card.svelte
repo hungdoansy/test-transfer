@@ -1,11 +1,18 @@
 <script lang="ts">
-    import type { HTMLAttributes } from "svelte/elements"
+    import type { Snippet } from "svelte"
+
     import { cn } from "@/lib/utils"
-    const { class: className, ...props }: HTMLAttributes<HTMLDivElement> = $props()
+
+    type CardProps = {
+        class?: string
+        children?: Snippet
+    }
+
+    let { class: className, children }: CardProps = $props()
 </script>
 
-<div class={cn("p-4 sm:p-6 rounded-xl border", className)} {...props}>
-    {#if props.children}
-        {@render props.children()}
+<div class={cn("h-fit p-4 sm:p-6 bg-white rounded-xl border border-gray-200", className)}>
+    {#if children}
+        {@render children()}
     {/if}
 </div>

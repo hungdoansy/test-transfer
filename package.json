@@ -3,6 +3,11 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "engines": {
+        "node": "^18",
+        "pnpm": "^9"
+    },
+    "packageManager": "pnpm@9.1.1",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -15,16 +20,15 @@
     },
     "dependencies": {
         "@lucide/svelte": "0.509.0",
+        "big.js": "7.0.1",
         "clsx": "2.1.1",
-        "crypto-js": "4.2.0",
-        "ethers": "6.13.7",
-        "svelte-5-french-toast": "^2.0.4",
+        "svelte-5-french-toast": "2.0.4",
         "tailwind-merge": "2.5.2"
     },
     "devDependencies": {
         "@sveltejs/vite-plugin-svelte": "5.0.3",
         "@tsconfig/svelte": "5.0.4",
-        "@types/crypto-js": "4.2.0",
+        "@types/big.js": "6.2.2",
         "@typescript-eslint/eslint-plugin": "8.32.0",
         "@typescript-eslint/parser": "8.32.0",
         "autoprefixer": "10.4.20",

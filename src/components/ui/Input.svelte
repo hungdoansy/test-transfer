@@ -1,15 +1,39 @@
 <script lang="ts">
     import { cn } from "@/lib/utils"
-    import type { HTMLInputAttributes } from "svelte/elements"
 
-    type Props = HTMLInputAttributes
-    const { class: className, ...props }: Props = $props()
+    type InputProps = {
+        id?: string
+        class?: string
+        value?: string
+        placeholder?: string
+        required?: boolean
+        type?: string
+        step?: string
+        disabled?: boolean
+        oninput?: (e: Event) => void
+    }
+
+    let {
+        id,
+        class: className = "",
+        value = $bindable(),
+        placeholder,
+        required,
+        type,
+        step,
+        disabled,
+        oninput,
+    }: InputProps = $props()
 </script>
 
 <input
-    class={cn(
-        "w-full px-4 h-9 rounded-md border bg-[#1a1a1a] text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#48ff91] focus:border-[#48ff91] transition-all duration-200",
-        className
-    )}
-    {...props}
+    {id}
+    class={cn("block h-8 w-full border-b border-gray-300 text-sm focus:outline-none text-gray-700", className)}
+    bind:value
+    {placeholder}
+    {required}
+    {type}
+    {step}
+    {disabled}
+    {oninput}
 />
