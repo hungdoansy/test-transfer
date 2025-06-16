@@ -35,7 +35,7 @@
         try {
             const account = generateRandomAccount()
             await createAccount(account.account_id, account.balance)
-            toast.success("New account added")
+            toast.success(`Account #${account.account_id} added`)
         } catch (error) {
             if (error instanceof Error) {
                 toast.error(error.message)

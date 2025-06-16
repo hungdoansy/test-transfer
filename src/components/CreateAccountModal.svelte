@@ -40,7 +40,7 @@
         isLoading = true
         try {
             await createAccount(Number(accountId), balance)
-            toast.success("New account added")
+            toast.success(`Account #${account.account_id} added`)
             isOpen = false
         } catch (error) {
             if (error instanceof Error) {
