@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { ChevronDownIcon, CheckIcon } from "@lucide/svelte"
+    import { ChevronDownIcon, CheckIcon, BoxIcon, InboxIcon } from "@lucide/svelte"
 
     import { cn } from "@/lib/utils"
     import { accountStore } from "@/stores/account.svelte"
@@ -81,23 +81,32 @@
         <div
             class="absolute z-10 top-full right-0 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto"
         >
-            {#each $accountStore.accounts as account}
-                <button
-                    type="button"
-                    onclick={() => handleSelect(account.account_id)}
-                    class={cn(
-                        "w-full px-3 py-2 flex items-center justify-between hover:bg-gray-100 transition-colors duration-200",
-                        account.account_id === value && "bg-blue-50"
-                    )}
-                >
-                    <span class="font-mono text-gray-800">
-                        #{account.account_id.toString()}
-                    </span>
-                    <CheckIcon
-                        class={cn("size-4 text-blue-600 invisible", account.account_id === value && "visible")}
-                    />
-                </button>
-            {/each}
+            {#if $accountStore.accounts.length === 0}
+                <div class="h-[120px] flex flex-col gap-3 items-center justify-center px-3 py-2 text-gray-500">
+                    <InboxIcon class="text-gray-400 size-8 flex-none" />
+                    <p class="text-xs text-center text-balance">
+                        No accounts found.<br />Please create an account first.
+                    </p>
+                </div>
+            {:else}
+                {#each $accountStore.accounts as account}
+                    <button
+                        type="button"
+                        onclick={() => handleSelect(account.account_id)}
+                        class={cn(
+                            "w-full px-3 py-2 flex items-center justify-between hover:bg-gray-100 transition-colors duration-200",
+                            account.account_id === value && "bg-blue-50"
+                        )}
+                    >
+                        <span class="font-mono text-gray-800">
+                            #{account.account_id.toString()}
+                        </span>
+                        <CheckIcon
+                            class={cn("size-4 text-blue-600 invisible", account.account_id === value && "visible")}
+                        />
+                    </button>
+                {/each}
+            {/if}
         </div>
     {/if}
 </div>
